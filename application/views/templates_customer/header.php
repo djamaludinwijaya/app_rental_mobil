@@ -8,6 +8,9 @@
     <!--=== Favicon ===-->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
+    <!--=== Jquery Min Js ===-->
+    <script src="<?php echo base_url() ?>assets/assets_shop/js/jquery-3.2.1.min.js"></script>
+
     <title>Rental Mobil Tangerang</title>
 
     <!--=== Bootstrap CSS ===-->

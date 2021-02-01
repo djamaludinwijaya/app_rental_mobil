@@ -2,7 +2,7 @@
 <section id="footer-area">
 
     <!-- Footer Bottom Start -->
-    <div class="footer-bottom-area fixed-bottom">
+    <div class="footer-bottom-area <?= $this->uri->segment(3) == 'tambah_rental' ? null : 'fixed-bottom' ?>">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -28,8 +28,7 @@
 <!--== Scroll Top Area End ==-->
 
 <!--=======================Javascript============================-->
-<!--=== Jquery Min Js ===-->
-<script src="<?php echo base_url() ?>assets/assets_shop/js/jquery-3.2.1.min.js"></script>
+
 <!--=== Jquery Migrate Min Js ===-->
 <script src="<?php echo base_url() ?>assets/assets_shop/js/jquery-migrate.min.js"></script>
 <!--=== Popper Min Js ===-->

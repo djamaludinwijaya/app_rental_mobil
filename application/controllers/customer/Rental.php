@@ -6,6 +6,10 @@ class Rental extends CI_Controller
   {
     $data['detail'] = $this->rental_model->ambil_id_mobil($id);
 
+    // untuk random supir
+    $data['supir'] = $this->db->query('SELECT * FROM `supir` WHERE 
+                    `status_supir` = 0 ORDER BY RAND()
+                    LIMIT 1')->row_array();
 
 
     $this->load->view('templates_customer/header');
