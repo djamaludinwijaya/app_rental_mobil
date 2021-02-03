@@ -41,7 +41,7 @@
 
                                 <a href="<?= base_url('admin/data_supir/delete_supir/') . $sp['id_supir'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin dihapus?')"><i class="fas fa-trash"></i></a>
 
-                                <a href="" class="btn btn-warning btn-sm" id="detail_supir" data-toggle="modal" data-target="#exampleModal" data-nama="<?= $sp['nama_supir']; ?>" data-status="<?= $sp['status_supir'] == 0 ? 'Tersedia' : 'Tidak Tersedia'; ?>" data-tarifkota="<?= $sp['tarif_supir_dk'] ?>" data-tarifluarkota="<?= $sp['tarif_supir_lk'] ?>"><i class="fas fa-eye"></i></a>
+                                <a href="" class="btn btn-warning btn-sm" id="detail_supir" data-toggle="modal" data-target="#modal_supir" data-namasupir="<?= $sp['nama_supir']; ?>" data-status="<?= $sp['status_supir'] == 0 ? 'Tersedia' : 'Tidak Tersedia'; ?>" data-tarifkota="<?= $sp['tarif_supir_dk'] ?>" data-tarifluarkota="<?= $sp['tarif_supir_lk'] ?>"><i class="fas fa-eye"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -55,7 +55,7 @@
 
 
 <!-- Modal Detail Data Supir -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_supir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -101,13 +101,13 @@
 </div>
 
 <script>
-    $('#detail_supir').on('click', function() {
-        const nama = $(this).data('nama')
+    $(document).on('click', '#detail_supir', function() {
+        const nama_supir = $(this).data('namasupir')
         const status_supir = $(this).data('status')
         const tarif_kota = $(this).data('tarifkota')
         const tarifluarkota = $(this).data('tarifluarkota')
 
-        $('.nama_supir').html(nama)
+        $('.nama_supir').html(nama_supir)
         $('.status_supir').html(status_supir)
         $('.tdk').html(tarif_kota)
         $('.tlk').html(tarifluarkota)

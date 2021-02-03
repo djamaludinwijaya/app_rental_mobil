@@ -86,7 +86,7 @@
                         <?php
                         } ?>
                     <?php } else { ?>
-                        <button class="btn btn-sm btn-warning" id="detail" data-toggle="modal" data-target="#exampleModal" data-nama="<?= $tr['nama'] ?>" data-merk="<?= $tr['merk'] ?>" data-harga="Rp. <?= number_format($tr['harga'], 0, ',', '.') ?>" data-denda="Rp. <?= number_format($tr['denda'], 0, ',', '.') ?>">
+                        <button class="btn btn-sm btn-warning" id="detail_transaksi" data-toggle="modal" data-target="#exampleModal" data-nama="<?= $tr['nama'] ?>" data-merk="<?= $tr['merk'] ?>" data-harga="Rp. <?= number_format($tr['harga'], 0, ',', '.') ?>" data-denda="Rp. <?= number_format($tr['denda'], 0, ',', '.') ?>">
                             <i class="fas fa-eye"></i>
                         </button>
 
@@ -150,7 +150,8 @@
 </div>
 
 <script>
-    $('#detail').on('click', function() {
+    // wajib document
+    $(document).on('click', '#detail_transaksi', function() {
         const id = $(this).data('id')
         const nama = $(this).data('nama')
         const merk = $(this).data('merk')
