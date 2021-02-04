@@ -44,6 +44,34 @@
                             <input type="text" name="no_telepon" class="form-control" id="no_telepon" value="<?= $supir['no_telepon'] ?>">
                             <?= form_error('no_telepon', '<span class="text-small text-danger">', '</span>'); ?>
                         </div>
+
+                        <div class=" form-group">
+                            <label for="status_supir">status_supir</label>
+                            <select name="status_supir" id="status_supir" class="form-control">
+
+                                <?php if ($supir['status_supir'] == 0) : ?>
+                                    <option value="0" selected>Tersedia</option>
+                                    <option value="1">Tidak Tersedia</option>
+                                <?php elseif ($supir['status_supir'] == 1) : ?>
+                                    <option value="1" selected>Tidak Tersedia</option>
+                                    <option value="0">Tersedia</option>
+                                <?php endif; ?>
+                            </select>
+                            <?= form_error('status_supir', '<span class="text-small text-danger">', '</span>'); ?>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="tarif_dalam_kota">Tarif Supir Dalam Kota</label>
+                            <input type="number" name="tarif_dalam_kota" class="form-control" id="tarif_dalam_kota" value="<?= $supir['tarif_supir_dk'] ?>">
+                            <?= form_error('tarif_dalam_kota', '<span class="text-small text-danger">', '</span>'); ?>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tarif_luar_kota">Tarif Supir Luar Kota</label>
+                            <input type="number" name="tarif_luar_kota" class="form-control" id="tarif_luar_kota" value="<?= $supir['tarif_supir_lk'] ?>">
+                            <?= form_error('tarif_luar_kota', '<span class="text-small text-danger">', '</span>'); ?>
+                        </div>
                         <button type="submit" class="btn btn-primary btn-sm">Update</button>
                         <button type="reset" class="btn btn-danger btn-sm">Reset</button>
                     </form>

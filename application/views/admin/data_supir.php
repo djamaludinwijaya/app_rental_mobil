@@ -41,7 +41,7 @@
 
                                 <a href="<?= base_url('admin/data_supir/delete_supir/') . $sp['id_supir'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin dihapus?')"><i class="fas fa-trash"></i></a>
 
-                                <a href="" class="btn btn-warning btn-sm" id="detail_supir" data-toggle="modal" data-target="#modal_supir" data-namasupir="<?= $sp['nama_supir']; ?>" data-status="<?= $sp['status_supir'] == 0 ? 'Tersedia' : 'Tidak Tersedia'; ?>" data-tarifkota="<?= $sp['tarif_supir_dk'] ?>" data-tarifluarkota="<?= $sp['tarif_supir_lk'] ?>"><i class="fas fa-eye"></i></a>
+                                <a href="" class="btn btn-warning btn-sm" id="detail_supir" data-toggle="modal" data-target="#modal_supir" data-namasupir="<?= $sp['nama_supir']; ?>" data-status="<?= $sp['status_supir'] == 0 ? 'Tersedia' : 'Tidak Tersedia'; ?>" data-tarifkota="Rp. <?= number_format($sp['tarif_supir_dk'], 0, ',', '.') ?>" data-tarifluarkota="Rp. <?= number_format($sp['tarif_supir_lk'], 0, ',', '.') ?>"><i class="fas fa-eye"></i></a>
                             </div>
                         </td>
                     </tr>

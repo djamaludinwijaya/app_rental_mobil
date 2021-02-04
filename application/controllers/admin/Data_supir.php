@@ -27,10 +27,14 @@ class Data_supir extends CI_Controller
             $this->tambah_supir();
         } else {
             $data = [
-                'nama_supir'    => ucfirst($this->input->post('nama_supir')),
-                'gender'        => trim($this->input->post('gender')),
-                'alamat_supir'  => $this->input->post('alamat_supir'),
-                'no_telepon'    => $this->input->post('no_telepon')
+                'nama_supir'        => ucfirst($this->input->post('nama_supir')),
+                'gender'            => trim($this->input->post('gender')),
+                'alamat_supir'      => $this->input->post('alamat_supir'),
+                'no_telepon'        => $this->input->post('no_telepon'),
+                'status_supir'      => $this->input->post('status_supir'),
+                'tarif_supir_dk'    => $this->input->post('tarif_dalam_kota'),
+                'tarif_supir_lk'    => $this->input->post('tarif_luar_kota'),
+
             ];
             $this->rental_model->insert_data($data, 'supir');
 
@@ -79,12 +83,18 @@ class Data_supir extends CI_Controller
             $gender         = trim($this->input->post('gender'));
             $alamat_supir   = $this->input->post('alamat_supir');
             $no_telepon     = $this->input->post('no_telepon');
+            $status_supir     = $this->input->post('status_supir');
+            $tarif_dalam_kota     = $this->input->post('tarif_dalam_kota');
+            $tarif_luar_kota     = $this->input->post('tarif_luar_kota');
             $data = [
-                'id_supir'      => $id_supir,
-                'nama_supir'    => $nama_supir,
-                'gender'        => $gender,
-                'alamat_supir'  => $alamat_supir,
-                'no_telepon'    => $no_telepon
+                'id_supir'          => $id_supir,
+                'nama_supir'        => $nama_supir,
+                'gender'            => $gender,
+                'alamat_supir'      => $alamat_supir,
+                'no_telepon'        => $no_telepon,
+                'status_supir'      => $status_supir,
+                'tarif_supir_dk'    => $tarif_dalam_kota,
+                'tarif_supir_lk'    => $tarif_luar_kota
             ];
             $where = [
                 'id_supir'  => $id_supir
@@ -144,5 +154,8 @@ class Data_supir extends CI_Controller
         $this->form_validation->set_rules('gender', 'Gender', 'required');
         $this->form_validation->set_rules('alamat_supir', 'Alamat Supir', 'required');
         $this->form_validation->set_rules('no_telepon', 'No Telepon', 'required|numeric');
+        $this->form_validation->set_rules('status_supir', 'Status Supir', 'required');
+        $this->form_validation->set_rules('tarif_dalam_kota', 'Tarif Dalam Kota', 'required');
+        $this->form_validation->set_rules('tarif_luar_kota', 'Tarif Luar Kota', 'required');
     }
 }
