@@ -24,6 +24,8 @@ class Rental extends CI_Controller
     $id_mobil           = $this->input->post('id_mobil');
     $tanggal_rental     = $this->input->post('tanggal_rental');
     $tanggal_kembali    = $this->input->post('tanggal_kembali');
+    $ket                = $this->input->post('ket');
+    $jangkauan_supir    = $this->input->post('jangkauan_supir');
 
     $hargaDenda = $this->rental_model->ambil_id_mobil($id_mobil);
     foreach ($hargaDenda as $hD) {
@@ -31,10 +33,23 @@ class Rental extends CI_Controller
       $harga              = $hD['harga'];
     }
 
+    $x        = strtotime($tanggal_kembali);
+    $y        = strtotime($tanggal_rental);
+    $jmlHari  = abs(($x - $y) / (60 * 60 * 24));
+
+
+    // jika keterangan tidak menggunakan supir maka cukup masukkan harga mobil
+    // selain itu ditambahkan biaya supir
+    if (isset($_POST['ket']) == '0') {
+      (int)$harga * $jmlHari;
+    } else {
+      $harga =  ((int)$harga + (int)$jangkauan_supir) * $jmlHari;
+    }
 
     $data = [
       'id_customer'           => $id_customer,
       'id_mobil'              => $id_mobil,
+      'id_supir'              => $ket,
       'tanggal_rental'        => $tanggal_rental,
       'tanggal_kembali'       => $tanggal_kembali,
       'denda'                 => $denda,
@@ -55,6 +70,15 @@ class Rental extends CI_Controller
       'id_mobil'  => $id_mobil
     ];
     $this->rental_model->update_data('mobil', $status, $id);
+
+    // jika status ket lebih dari nol artinya pakai supir
+    // update statusnya
+    if ($ket > 0) {
+      $status_supir = ['status_supir' => '1'];
+      $id_supir = ['id_supir' => $ket];
+      $this->rental_model->update_data('supir', $status_supir, $id_supir);
+    }
+
 
     $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong> Transaksi Berhasil, Silahkan Checkout!. 
