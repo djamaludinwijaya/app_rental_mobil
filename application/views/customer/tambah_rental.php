@@ -34,11 +34,11 @@
                     </div>
 
                     <div class="form-group" id="jangkauan" style="display: none;">
-                        <label for="ket">Dalam Kota/ Luar kota</label>
-                        <select name="ket" id="ket" class="form-control">
+                        <label for="jangkauan_supir">Dalam Kota/ Luar kota</label>
+                        <select name="jangkauan_supir" id="jangkauan_supir" class="form-control">
                             <option>-- Pilih Jangkauan ---</option>
-                            <option value="0">Dalam Kota (24 jam / Rp. 350.000)</option>
-                            <option value="1">Luar Kota (24 jam / Rp. 500.000)</option>
+                            <option value="<?= $supir['tarif_supir_dk'] ? $supir['tarif_supir_dk'] : 0; ?>">Dalam Kota (24 jam / Rp. <?= number_format($supir['tarif_supir_dk'], 0, ',', '.'); ?>)</option>
+                            <option value="<?= $supir['tarif_supir_lk'] ? $supir['tarif_supir_lk'] : 0; ?>">Luar Kota (24 jam / Rp. <?= number_format($supir['tarif_supir_lk'], 0, ',', '.') ?></option>
                         </select>
                     </div>
 
@@ -60,6 +60,7 @@
 </div>
 
 <script>
+    // script untuk lepas kunci / pakai supir
     $(document).on('change', '#ket', function(e) {
         if ($(this).val() == '0') {
             $('#jangkauan').hide()
