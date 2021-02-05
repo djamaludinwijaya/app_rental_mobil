@@ -40,7 +40,8 @@
                             </tr>
 
                             <tr>
-                                <?php $x = strtotime($tr['tanggal_kembali']);
+                                <?php
+                                $x = strtotime($tr['tanggal_kembali']);
                                 $y = strtotime($tr['tanggal_rental']);
                                 $jmlHari = abs(($x - $y) / (60 * 60 * 24));
                                 ?>
