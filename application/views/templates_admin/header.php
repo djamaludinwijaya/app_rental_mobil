@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/bootstrap-4.5.0/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/fontawesome-free/css/all.css') ?>">
 
+    <link href="<?= base_url('assets/assets_stisla/assets/img/admin.png'); ?>" rel="shortcut icon" type="image/x-icon" />
+
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/assets_stisla') ?>/assets/css/style.css">
