@@ -8,7 +8,7 @@ class Rental extends CI_Controller
 
     // untuk random supir
     $data['supir'] = $this->db->query('SELECT * FROM `supir` WHERE 
-                    `status_supir` = 0 ORDER BY RAND()
+                    `status_supir` = 1 ORDER BY RAND()
                     LIMIT 1')->row_array();
 
 
@@ -74,7 +74,7 @@ class Rental extends CI_Controller
     // jika status ket lebih dari nol artinya pakai supir
     // update statusnya
     if ($ket > 0) {
-      $status_supir = ['status_supir' => '1'];
+      $status_supir = ['status_supir' => '0'];
       $id_supir = ['id_supir' => $ket];
       $this->rental_model->update_data('supir', $status_supir, $id_supir);
     }

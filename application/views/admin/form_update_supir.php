@@ -49,17 +49,16 @@
                             <label for="status_supir">status_supir</label>
                             <select name="status_supir" id="status_supir" class="form-control">
 
-                                <?php if ($supir['status_supir'] == 0) : ?>
-                                    <option value="0" selected>Tersedia</option>
-                                    <option value="1">Tidak Tersedia</option>
-                                <?php elseif ($supir['status_supir'] == 1) : ?>
-                                    <option value="1" selected>Tidak Tersedia</option>
-                                    <option value="0">Tersedia</option>
+                                <?php if ($supir['status_supir'] == 1) : ?>
+                                    <option value="1" selected>Tersedia</option>
+                                    <option value="0">Tidak Tersedia</option>
+                                <?php elseif ($supir['status_supir'] == 0) : ?>
+                                    <option value="0" selected>Tidak Tersedia</option>
+                                    <option value="1">Tersedia</option>
                                 <?php endif; ?>
                             </select>
                             <?= form_error('status_supir', '<span class="text-small text-danger">', '</span>'); ?>
                         </div>
-
 
                         <div class="form-group">
                             <label for="tarif_dalam_kota">Tarif Supir Dalam Kota</label>

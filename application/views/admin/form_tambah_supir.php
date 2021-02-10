@@ -45,8 +45,8 @@
                             <label for="status_supir">Status Supir</label>
                             <select name="status_supir" id="status_supir" class="form-control">
                                 <option value="">Pilih Status Supir</option>
-                                <option value="0">Tersedia</option>
-                                <option value="1">Tidak Tersedia</option>
+                                <option value="1">Tersedia</option>
+                                <option value="0">Tidak Tersedia</option>
                             </select>
                             <?= form_error('status_supir', '<span class="text-small text-danger">', '</span>'); ?>
                         </div>
