@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--=== Favicon ===-->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+
+    <link href="<?= base_url('assets/assets_shop/img/sedan-car-front.png'); ?>" rel="shortcut icon" type="image/x-icon" />
 
     <!--=== Jquery Min Js ===-->
     <script src="<?php echo base_url() ?>assets/assets_shop/js/jquery-3.2.1.min.js"></script>
