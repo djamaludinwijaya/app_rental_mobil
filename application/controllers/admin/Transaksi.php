@@ -4,9 +4,22 @@ class Transaksi extends CI_Controller
 {
   public function index()
   {
-    $data['transaksi'] = $this->db->query("SELECT * FROM transaksi tr, mobil mb, customer cs
-                                                WHERE tr.id_mobil = mb.id_mobil 
-                                                AND tr.id_customer = cs.id_customer")->result_array();
+    // cara query dari framework indonesia
+    // $data['transaksi'] = $this->db->query("SELECT * FROM transaksi tr, 
+    //                                         mobil mb, customer cs, supir sp
+    //                                         WHERE tr.id_mobil = mb.id_mobil 
+    //                                         AND tr.id_customer = cs.id_customer
+    //                                         AND tr.id_supir = sp.id_supir")->result_array();
+
+    $data['transaksi'] = $this->db->query("SELECT customer.nama , mobil.merk, supir.nama_supir,
+                                          transaksi.harga AS harga_transaksi ,transaksi.*
+                                          FROM transaksi
+                                          INNER JOIN customer
+                                          ON transaksi.id_customer = customer.id_customer
+                                          INNER JOIN mobil
+                                          ON transaksi.id_mobil = mobil.id_mobil
+                                          INNER JOIN supir
+                                          ON transaksi.id_supir = supir.id_supir")->result_array();
     $this->load->view('templates_admin/header');
     $this->load->view('templates_admin/sidebar');
     $this->load->view('admin/data_transaksi', $data);
@@ -98,7 +111,6 @@ class Transaksi extends CI_Controller
     $y          = strtotime($tanggal_kembali);
     $selisih    = abs($x - $y) / (60 * 60 * 24);
     $total_denda = $selisih * $denda;
-
 
     $data = [
       'tanggal_pengembalian'          => $tanggal_pengembalian,
