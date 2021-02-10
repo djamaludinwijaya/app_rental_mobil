@@ -40,7 +40,7 @@ class Rental extends CI_Controller
 
     // jika keterangan tidak menggunakan supir maka cukup masukkan harga mobil
     // selain itu ditambahkan biaya supir
-    if (isset($_POST['ket']) == '0') {
+    if (isset($_POST['ket']) == '1') {
       (int)$harga * $jmlHari;
     } else {
       $harga =  ((int)$harga + (int)$jangkauan_supir) * $jmlHari;
