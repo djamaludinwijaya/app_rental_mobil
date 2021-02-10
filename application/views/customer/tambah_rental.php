@@ -28,7 +28,7 @@
                         <label for="ket">Lepas kunci / Supir</label>
                         <select name="ket" id="ket" class="form-control">
                             <option>-- Pilih Supir ---</option>
-                            <option value="0" class="lepas">Lepas Kunci</option>
+                            <option value="1" class="lepas">Lepas Kunci</option>
                             <option value="<?= $supir['id_supir'] ?>">Supir</option>
                         </select>
                     </div>
@@ -62,7 +62,7 @@
 <script>
     // script untuk lepas kunci / pakai supir
     $(document).on('change', '#ket', function(e) {
-        if ($(this).val() == '0') {
+        if ($(this).val() == '1') {
             $('#jangkauan').hide()
         } else {
             $('#jangkauan').show()
