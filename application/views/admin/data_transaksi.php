@@ -65,7 +65,7 @@
                                     <a onclick="return confirm('Yakin Batal Transaksi?')" href="<?= base_url('admin/transaksi/transaksi_batal/' . $tr['id_rental']) ?>" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-sm btn-warning" id="detail_transaksi" data-toggle="modal" data-target="#exampleModal" data-nama="<?= $tr['nama'] ?>" data-merk="<?= $tr['merk'] ?>" data-harga="Rp. <?= number_format($tr['harga_transaksi'], 0, ',', '.') ?>" data-denda="Rp. <?= number_format($tr['denda'], 0, ',', '.') ?>" data-supir=<?= $tr['nama_supir'] ? $tr['nama_supir'] : null; ?>>
+                                    <button class="btn btn-sm btn-warning" id="detail_transaksi" data-toggle="modal" data-target="#exampleModal" data-nama="<?= $tr['nama'] ?>" data-merk="<?= $tr['merk'] ?>" data-harga="Rp. <?= number_format($tr['harga_transaksi'], 0, ',', '.') ?>" data-denda="Rp. <?= number_format($tr['denda'], 0, ',', '.') ?>" data-supir=<?= $tr['nama_supir'] == 'Tanpa' ? null : $tr['nama_supir']; ?>>
                                         <i class="fas fa-eye"></i>
                                     </button>
 
@@ -86,7 +86,7 @@
                         <?php
                         } ?>
                     <?php } else { ?>
-                        <button class="btn btn-sm btn-warning" id="detail_transaksi" data-toggle="modal" data-target="#exampleModal" data-nama="<?= $tr['nama'] ?>" data-merk="<?= $tr['merk'] ?>" data-harga="Rp. <?= number_format($tr['harga_transaksi'], 0, ',', '.') ?>" data-denda="Rp. <?= number_format($tr['denda'], 0, ',', '.') ?>" data-supir=<?= $tr['nama_supir'] ? $tr['nama_supir'] : null; ?>>
+                        <button class="btn btn-sm btn-warning" id="detail_transaksi" data-toggle="modal" data-target="#exampleModal" data-nama="<?= $tr['nama'] ?>" data-merk="<?= $tr['merk'] ?>" data-harga="Rp. <?= number_format($tr['harga_transaksi'], 0, ',', '.') ?>" data-denda="Rp. <?= number_format($tr['denda'], 0, ',', '.') ?>" data-supir=<?= $tr['nama_supir'] == 'Tanpa' ? null : $tr['nama_supir']; ?>>
                             <i class="fas fa-eye"></i>
                         </button>
 
@@ -167,24 +167,19 @@
         const denda = $(this).data('denda')
         const nama_supir = $(this).data('supir')
 
+
         $('.nama').html(nama)
         $('.merk').html(merk)
         $('.harga').html(harga)
         $('.denda').html(denda)
         $('.nama_supir').html(nama_supir)
 
-        if ($('.nama_supir').html() === 'Tanpa') {
-            $('.nama_supir_table').hide()
-        } else {
-            if ($('.nama_supir').html() === 'Tanpa') {
-                $('.nama_supir_table').hide()
-            }
+
+        if ($('.nama_supir').html() !== '') {
             $('#nama_supir_table').show()
-            $('.nama_supir').html(nama_supir)
+        } else {
+            $('#nama_supir_table').hide()
         }
-
-        console.log($('.nama_supir').html())
-
 
     })
 </script>
